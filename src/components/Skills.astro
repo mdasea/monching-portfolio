@@ -1,0 +1,293 @@
+---
+interface SkillGroup {
+  category: string;
+  skills: { name: string; level: number; color: string }[];
+}
+
+const skillGroups: SkillGroup[] = [
+  {
+    category: 'Backend',
+    skills: [
+      { name: 'Java 8/17', level: 95, color: 'oklch(var(--color-error))' },
+      { name: 'Java/Jakarta EE', level: 90, color: 'oklch(var(--color-error))' },
+      { name: 'Spring', level: 88, color: 'oklch(var(--color-success))' },
+      { name: 'REST APIs', level: 92, color: 'oklch(var(--color-primary))' },
+      { name: 'SQL & JPA/Hibernate', level: 85, color: 'oklch(var(--color-warning))' },
+    ],
+  },
+  {
+    category: 'Frontend',
+    skills: [
+      { name: 'React', level: 82, color: 'oklch(var(--color-info))' },
+      { name: 'Vue', level: 80, color: 'oklch(var(--color-success))' },
+      { name: 'JavaScript ES6+', level: 88, color: 'oklch(var(--color-warning))' },
+      { name: 'TypeScript', level: 78, color: 'oklch(var(--color-primary))' },
+      { name: 'HTML/CSS', level: 85, color: 'oklch(var(--color-warning))' },
+    ],
+  },
+  {
+    category: 'AI & Tools',
+    skills: [
+      { name: 'Claude / Opencode', level: 92, color: 'oklch(var(--color-secondary))' },
+      { name: 'Cursor / Lovable / Trae / Junie', level: 88, color: 'oklch(var(--color-secondary))' },
+      { name: 'Playwright MCP', level: 85, color: 'oklch(var(--color-info))' },
+      { name: 'Git & Agile/Scrum', level: 90, color: 'oklch(var(--color-success))' },
+      { name: 'Vibe Coding', level: 88, color: 'oklch(var(--color-secondary))' },
+    ],
+  },
+  {
+    category: 'Platforms & APIs',
+    skills: [
+      { name: 'Atlassian SDK / Forge', level: 88, color: 'oklch(var(--color-primary))' },
+      { name: 'Novita AI API', level: 82, color: 'oklch(var(--color-secondary))' },
+      { name: 'RESEND API', level: 78, color: 'oklch(var(--color-info))' },
+      { name: 'Tavus / Heygen AI', level: 75, color: 'oklch(var(--color-warning))' },
+      { name: 'Lark / Manus AI', level: 75, color: 'oklch(var(--color-success))' },
+    ],
+  },
+];
+
+interface Cert {
+  name: string;
+  issuer: string;
+  date: string;
+  link?: string;
+}
+
+const certifications: Cert[] = [
+  { name: 'Modern Java: Mastering Features from Java 8 to Java 21', issuer: 'Udemy', date: '2025', link: 'https://ude.my/UC-5bcf25c1-b89f-44a3-8b73-cf1011acb855' },
+  { name: 'Lean Six Sigma Foundations', issuer: 'LinkedIn', date: 'Feb 2025', link: 'https://www.linkedin.com/learning/certificates/4ae2bdb89704559e0c3a9d6c8ab873330bbc32816cf90bb871520d96de66ff06/' },
+  { name: 'React.js Essential Training', issuer: 'LinkedIn', date: 'Sep 2022', link: 'https://www.linkedin.com/learning/certificates/380b0477b515b39464b7e2f8ae05e5c67b9ca0fb800e20bd0cccfb218972a6cd/' },
+  { name: 'Learning TypeScript', issuer: 'LinkedIn', date: 'Sep 2022', link: 'https://www.linkedin.com/learning/certificates/3aa396faeeb4a435b622de91b0a63aee0e846f5b214860afad451a229560b734/' },
+  { name: 'Sustainable Software Architecture', issuer: 'LinkedIn', date: 'Sep 2022', link: 'https://www.linkedin.com/learning/certificates/b5361e81ccbd3f768ea83ffa256c7812e113273dd86257b530a1babd9989968c/' },
+  { name: 'Software Design: Code & Design Smells', issuer: 'LinkedIn', date: 'Sep 2022', link: 'https://www.linkedin.com/learning/certificates/f8e95e33d222aac7f02ffb8e458db4643bdee06dc1440bfd037c00ba3a4a8602/' },
+  { name: 'Learning Vue.js', issuer: 'LinkedIn', date: 'Sep 2022', link: 'https://www.linkedin.com/learning/certificates/05002a8b9bec03bf1b766846188d841b3544d085ac4ec0212a5340e3ff9290ed/' },
+  { name: 'Agile Software Development: Clean Coding Practices', issuer: 'LinkedIn', date: 'Sep 2022', link: 'https://www.linkedin.com/learning/certificates/e81267cbcff9ef15681769da875aa61ac4889c2d41a608e9dc03df96328eb255/' },
+  { name: 'Jira and Confluence Together Badge', issuer: 'Atlassian', date: 'Aug 2022' },
+  { name: 'Spring Boot 2.0 Essential Training', issuer: 'LinkedIn', date: 'Jul 2022', link: 'https://www.linkedin.com/learning/certificates/367441d3a736142b3aae7bb6ea6daba860b744e4058db16d8d5fe7b8f03b5e3a/' },
+  { name: 'Learning Spring with Spring Boot', issuer: 'LinkedIn', date: 'Jul 2022', link: 'https://www.linkedin.com/learning/certificates/50a4618e77cd3bd55f447b231106322e49ab8538632165dfccbc55a3daaea397/' },
+  { name: 'Java 11+ Essential Training', issuer: 'LinkedIn', date: '2022' },
+  { name: 'Advanced Java Programming', issuer: 'LinkedIn', date: '2022' },
+  { name: 'Java: Testing with JUnit', issuer: 'LinkedIn', date: '2022' },
+  { name: 'Java: Data Structures', issuer: 'LinkedIn', date: '2022' },
+];
+---
+
+<section class="section" id="skills">
+  <div class="container">
+    <div class="reveal">
+      <h2 class="section-title">Skills & <span class="gradient-text">Expertise</span></h2>
+      <p class="section-subtitle">Technologies I work with</p>
+    </div>
+    <div class="skills-grid">
+      {skillGroups.map((group) => (
+        <div class="skills-col reveal reveal-delay-1">
+          <h3 class="skills-category">{group.category}</h3>
+          <div class="skills-bars">
+            {group.skills.map((skill) => (
+              <div class="skill-bar-wrap">
+                <div class="skill-info">
+                  <span class="skill-name">{skill.name}</span>
+                </div>
+                <div class="skill-track">
+                  <div
+                    class="skill-fill"
+                    style={`--fill-color: ${skill.color}; --fill-level: ${skill.level}%`}
+                  ></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+    <div class="certs-section reveal reveal-delay-2">
+      <h4 class="certs-title">Certifications</h4>
+      <div class="certs-grid">
+        {certifications.map((cert) => cert.link ? (
+          <a href={cert.link} target="_blank" rel="noopener noreferrer" class="cert-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+            <span class="cert-name">{cert.name}</span>
+            <span class="cert-tooltip">{cert.issuer} &middot; {cert.date}</span>
+          </a>
+        ) : (
+          <span class="cert-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+            <span class="cert-name">{cert.name}</span>
+            <span class="cert-tooltip">{cert.issuer} &middot; {cert.date}</span>
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const skillObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.style.width = entry.target.style.getPropertyValue('--fill-level');
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.skill-fill').forEach(el => {
+      el.style.width = '0%';
+      skillObserver.observe(el);
+    });
+  });
+</script>
+
+<style is:global>
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .skills-category {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid oklch(var(--color-base-content) / 0.06);
+    font-family: var(--font-mono);
+    color: oklch(var(--color-primary));
+  }
+
+  .skills-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .skill-bar-wrap {
+  }
+
+  .skill-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.4rem;
+  }
+
+  .skill-name {
+    font-size: 0.88rem;
+    font-weight: 500;
+  }
+
+  .skill-track {
+    height: 8px;
+    background: oklch(var(--color-base-content) / 0.06);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .skill-fill {
+    height: 100%;
+    border-radius: 6px;
+    background: var(--fill-color, #4f7df3);
+    width: 0%;
+    transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+  }
+
+  .skill-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+    animation: shimmer 2.5s ease-in-out infinite;
+  }
+
+  .certs-section {
+    margin-top: 2rem;
+  }
+
+  .certs-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-family: var(--font-mono);
+    opacity: 0.5;
+  }
+
+  .certs-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .cert-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 0.85rem;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    background: oklch(var(--color-base-200) / 0.5);
+    border: 1px solid oklch(var(--color-base-content) / 0.08);
+    color: oklch(var(--color-base-content) / 0.7);
+    transition: all 0.2s;
+    text-decoration: none;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .cert-badge:hover {
+    border-color: oklch(var(--color-primary));
+    color: oklch(var(--color-base-content));
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px oklch(var(--color-primary) / 0.06);
+  }
+
+  .cert-badge svg {
+    color: oklch(var(--color-primary));
+    flex-shrink: 0;
+  }
+
+  .cert-tooltip {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%) scale(0.8);
+    background: oklch(var(--color-base-100));
+    border: 1px solid oklch(var(--color-primary) / 0.2);
+    border-radius: 6px;
+    padding: 0.35rem 0.7rem;
+    font-size: 0.72rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.2s;
+    box-shadow: 0 4px 12px oklch(0 0 0 / 0.15);
+    z-index: 10;
+  }
+
+  .cert-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: oklch(var(--color-primary) / 0.2);
+  }
+
+  .cert-badge:hover .cert-tooltip {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+
+  @media (max-width: 768px) {
+    .skills-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  }
+</style>

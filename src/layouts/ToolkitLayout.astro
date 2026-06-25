@@ -1,0 +1,629 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+
+interface TocItem {
+  id: string;
+  label: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  tocItems: TocItem[];
+  accent?: 'primary' | 'secondary';
+}
+
+const { accent = 'primary' } = Astro.props as Props;
+const accentVar = accent === 'secondary'
+  ? 'oklch(var(--color-secondary))'
+  : 'oklch(var(--color-primary))';
+---
+
+<BaseLayout title={Astro.props.title} description={Astro.props.description}>
+  <Nav />
+
+  <main class="tk-page" style={`--tk-accent: $var(--tk-accent); --tk-accent-dim: ${accent === 'secondary' ? 'oklch(var(--color-secondary) / 0.15)' : 'oklch(var(--color-primary) / 0.15)'};`}>
+    <div class="container tk-layout">
+      <aside class="tk-sidebar" id="tkSidebar">
+        <div class="tk-sidebar-inner">
+          <div class="tk-toc-controls">
+            <input type="search" class="tk-search" id="tkSearch" placeholder="Filter topics..." aria-label="Filter topics" />
+            <button class="tk-expand-btn" id="tkExpandBtn" title="Expand / collapse all">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 13 12 18 17 13"/><polyline points="7 6 12 11 17 6"/></svg>
+              <span>Expand All</span>
+            </button>
+          </div>
+          <nav class="tk-toc" id="tkToc" aria-label="On this page">
+            {Astro.props.tocItems.map((item, i) => (
+              <a href={`#${item.id}`} class="tk-toc-link" data-section={item.id}>
+                <span class="tk-toc-num">{String(i + 1).padStart(2, '0')}</span>
+                <span>{item.label}</span>
+              </a>
+            ))}
+          </nav>
+          <div class="tk-sidebar-footer">
+            <a href="/" class="tk-back-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+              Home
+            </a>
+            <a href="/toolkit/development" class="tk-swap-link">Dev Toolkit</a>
+            <a href="/toolkit/ai-automation" class="tk-swap-link">AI Automation</a>
+          </div>
+        </div>
+      </aside>
+
+      <div class="tk-content">
+        <div class="tk-hero">
+          <a href="/" class="tk-back">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            Home
+          </a>
+          <h1 class="tk-title"><slot name="title" /></h1>
+          <p class="tk-subtitle" set:html={Astro.props.description}></p>
+          <div class="tk-meta-controls" id="tkMetaControls" style="display:none">
+            <span class="tk-meta-badge" id="tkResultsBadge"></span>
+          </div>
+        </div>
+
+        <slot />
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Search filter
+    const searchInput = document.getElementById('tkSearch');
+    const expandBtn = document.getElementById('tkExpandBtn');
+    const resultsBadge = document.getElementById('tkResultsBadge');
+    const metaControls = document.getElementById('tkMetaControls');
+    const details = document.querySelectorAll('.tk-detail');
+    const sections = document.querySelectorAll('.tk-section');
+
+    // Expand / collapse all
+    let allExpanded = false;
+    expandBtn?.addEventListener('click', () => {
+      allExpanded = !allExpanded;
+      details.forEach(d => d.open = allExpanded);
+      expandBtn.querySelector('span').textContent = allExpanded ? 'Collapse All' : 'Expand All';
+      expandBtn.querySelector('svg').innerHTML = allExpanded
+        ? '<polyline points="18 15 12 10 6 15"/><polyline points="18 8 12 3 6 8"/>'
+        : '<polyline points="7 13 12 18 17 13"/><polyline points="7 6 12 11 17 6"/>';
+    });
+
+    // Search / filter
+    searchInput?.addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase().trim();
+      let visibleCount = 0;
+      let totalCount = 0;
+
+      details.forEach(d => {
+        const summary = d.querySelector('summary');
+        const text = summary?.textContent?.toLowerCase() || '';
+        const code = d.querySelector('.tk-pre')?.textContent?.toLowerCase() || '';
+        const match = !q || text.includes(q) || code.includes(q);
+        d.style.display = match ? '' : 'none';
+
+        if (!d.closest('.tk-section')?.querySelector('.tk-detail[style*="none"]')) {
+          // section has at least one visible detail
+        }
+        if (match) visibleCount++;
+        totalCount++;
+      });
+
+      // Show/hide sections based on visible children
+      sections.forEach(s => {
+        const visibleDetails = s.querySelectorAll('.tk-detail:not([style*="none"])');
+        s.style.display = visibleDetails.length > 0 ? '' : 'none';
+      });
+
+      if (q && metaControls) {
+        metaControls.style.display = '';
+        if (resultsBadge) {
+          resultsBadge.textContent = visibleCount === totalCount
+            ? `Showing all ${totalCount} topics`
+            : `${visibleCount} of ${totalCount} topics`;
+        }
+      } else if (metaControls) {
+        metaControls.style.display = 'none';
+      }
+    });
+
+    // Copy to clipboard
+    document.querySelectorAll('.tk-pre').forEach(pre => {
+      const btn = document.createElement('button');
+      btn.className = 'tk-copy-btn';
+      btn.setAttribute('aria-label', 'Copy to clipboard');
+      btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+      const parent = pre.parentElement;
+      if (parent) {
+        parent.style.position = 'relative';
+        parent.appendChild(btn);
+      }
+
+      btn.addEventListener('click', async () => {
+        const text = pre.textContent || '';
+        try {
+          await navigator.clipboard.writeText(text);
+          btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+          btn.classList.add('copied');
+          setTimeout(() => {
+            btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+            btn.classList.remove('copied');
+          }, 2000);
+        } catch {
+          // fallback for older browsers
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+        }
+      });
+    });
+
+    // Scroll-spy for sidebar TOC
+    const tocLinks = document.querySelectorAll('.tk-toc-link');
+    const sectionEls = document.querySelectorAll('.tk-section[id]');
+
+    if (sectionEls.length > 0) {
+      const tocObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            tocLinks.forEach(link => {
+              link.classList.toggle('active', link.dataset.section === id);
+            });
+          }
+        });
+      }, { threshold: 0.25, rootMargin: '-80px 0px -60% 0px' });
+
+      sectionEls.forEach(el => tocObserver.observe(el));
+    }
+
+    // Mobile sidebar toggle
+    const sidebar = document.getElementById('tkSidebar');
+    const sidebarToggle = document.createElement('button');
+    sidebarToggle.className = 'tk-sidebar-toggle';
+    sidebarToggle.setAttribute('aria-label', 'Toggle table of contents');
+    sidebarToggle.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg> <span>Contents</span>';
+    document.querySelector('.tk-hero')?.prepend(sidebarToggle);
+
+    sidebarToggle.addEventListener('click', () => {
+      sidebar?.classList.toggle('open');
+    });
+
+    // Close sidebar when clicking a TOC link (mobile)
+    tocLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        sidebar?.classList.remove('open');
+      });
+    });
+
+    // Close sidebar on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') sidebar?.classList.remove('open');
+    });
+  </script>
+
+  <style is:global>
+    .tk-page {
+      padding: 7rem 0 4rem;
+    }
+
+    .tk-layout {
+      display: flex;
+      gap: 2.5rem;
+      align-items: flex-start;
+    }
+
+    /* ===== Sidebar ===== */
+    .tk-sidebar {
+      position: sticky;
+      top: 6rem;
+      flex-shrink: 0;
+      width: 220px;
+      max-height: calc(100vh - 8rem);
+      overflow-y: auto;
+    }
+
+    .tk-sidebar-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .tk-toc-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .tk-search {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0.55rem 0.75rem;
+      border-radius: 8px;
+      border: 1px solid oklch(var(--color-base-content) / 0.1);
+      background: oklch(var(--color-base-100));
+      color: oklch(var(--color-base-content));
+      font-size: 0.82rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .tk-search:focus {
+      border-color: var(--tk-accent);
+    }
+
+    .tk-search::placeholder {
+      color: oklch(var(--color-base-content) / 0.3);
+    }
+
+    .tk-expand-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.4rem 0.65rem;
+      border-radius: 6px;
+      border: 1px solid oklch(var(--color-base-content) / 0.08);
+      background: transparent;
+      color: oklch(var(--color-base-content) / 0.55);
+      font-size: 0.78rem;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+
+    .tk-expand-btn:hover {
+      border-color: var(--tk-accent);
+      color: var(--tk-accent);
+    }
+
+    /* TOC links */
+    .tk-toc {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .tk-toc-link {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.4rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: oklch(var(--color-base-content) / 0.45);
+      text-decoration: none;
+      transition: all 0.2s;
+      border-left: 2px solid transparent;
+    }
+
+    .tk-toc-link:hover {
+      color: oklch(var(--color-base-content) / 0.7);
+      background: oklch(var(--color-base-content) / 0.03);
+    }
+
+    .tk-toc-link.active {
+      color: var(--tk-accent);
+      border-left-color: var(--tk-accent);
+      background: oklch(var(--color-base-content) / 0.02);
+    }
+
+    .tk-toc-num {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      opacity: 0.4;
+      min-width: 1.5em;
+    }
+
+    .tk-toc-link.active .tk-toc-num {
+      opacity: 0.8;
+    }
+
+    .tk-sidebar-footer {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid oklch(var(--color-base-content) / 0.06);
+      margin-top: auto;
+    }
+
+    .tk-back-link,
+    .tk-swap-link {
+      font-size: 0.78rem;
+      color: oklch(var(--color-base-content) / 0.35);
+      text-decoration: none;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .tk-back-link:hover,
+    .tk-swap-link:hover {
+      color: var(--tk-accent);
+    }
+
+    /* Mobile sidebar toggle */
+    .tk-sidebar-toggle {
+      display: none;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 0.85rem;
+      border-radius: 8px;
+      border: 1px solid oklch(var(--color-base-content) / 0.1);
+      background: oklch(var(--color-base-100));
+      color: oklch(var(--color-base-content) / 0.6);
+      font-size: 0.82rem;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: inherit;
+      margin-bottom: 0.75rem;
+      transition: all 0.2s;
+    }
+
+    .tk-sidebar-toggle:hover {
+      border-color: var(--tk-accent);
+      color: var(--tk-accent);
+    }
+
+    /* ===== Main content ===== */
+    .tk-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .tk-hero {
+      margin-bottom: 2.5rem;
+    }
+
+    .tk-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: oklch(var(--color-base-content) / 0.4);
+      text-decoration: none;
+      margin-bottom: 0.75rem;
+      transition: color 0.2s;
+    }
+
+    .tk-back:hover {
+      color: var(--tk-accent);
+    }
+
+    .tk-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin: 0 0 0.5rem;
+      letter-spacing: -0.03em;
+    }
+
+    .tk-subtitle {
+      font-size: 1rem;
+      opacity: 0.5;
+      margin: 0;
+    }
+
+    .tk-meta-controls {
+      margin-top: 0.75rem;
+    }
+
+    .tk-meta-badge {
+      font-size: 0.78rem;
+      color: oklch(var(--color-base-content) / 0.4);
+      font-weight: 500;
+    }
+
+    /* ===== Sections ===== */
+    .tk-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .tk-section {
+      border: 1px solid oklch(var(--color-base-content) / 0.08);
+      border-radius: 12px;
+      padding: 1.75rem;
+      background: oklch(var(--color-base-200) / 0.12);
+      scroll-margin-top: 6rem;
+    }
+
+    .tk-section-title {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin: 0 0 1.25rem;
+      font-family: var(--font-mono);
+      color: var(--tk-accent);
+    }
+
+    .tk-section-title svg {
+      flex-shrink: 0;
+    }
+
+    /* ===== Details blocks ===== */
+    .tk-detail {
+      border: 1px solid oklch(var(--color-base-content) / 0.08);
+      border-radius: 10px;
+      margin-bottom: 0.6rem;
+      overflow: hidden;
+      transition: all 0.25s;
+    }
+
+    .tk-detail summary {
+      padding: 0.8rem 1.1rem;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: oklch(var(--color-base-content) / 0.75);
+      transition: background 0.2s, color 0.2s;
+      user-select: none;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .tk-detail summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .tk-detail summary::before {
+      content: '+';
+      font-size: 1rem;
+      font-weight: 300;
+      color: oklch(var(--color-base-content) / 0.25);
+      transition: transform 0.25s, color 0.25s;
+      min-width: 1em;
+      text-align: center;
+    }
+
+    .tk-detail[open] summary::before {
+      content: '−';
+      color: var(--tk-accent);
+    }
+
+    .tk-detail summary:hover {
+      background: oklch(var(--color-base-content) / 0.025);
+      color: oklch(var(--color-base-content));
+    }
+
+    .tk-detail summary:hover::before {
+      color: oklch(var(--color-base-content) / 0.5);
+    }
+
+    .tk-detail[open] summary {
+      color: var(--tk-accent);
+      border-bottom: 1px solid oklch(var(--color-base-content) / 0.05);
+    }
+
+    .tk-detail[open] summary:hover::before {
+      color: var(--tk-accent);
+    }
+
+    /* ===== Code blocks ===== */
+    .tk-code-block {
+      padding: 0.75rem 1.1rem 1rem;
+      position: relative;
+    }
+
+    .tk-pre {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      line-height: 1.65;
+      background: oklch(var(--color-base-100));
+      border: 1px solid oklch(var(--color-base-content) / 0.06);
+      border-radius: 8px;
+      padding: 1rem;
+      overflow-x: auto;
+      white-space: pre;
+      tab-size: 2;
+      color: oklch(var(--color-base-content) / 0.85);
+      margin: 0;
+      max-height: 500px;
+      position: relative;
+    }
+
+    .tk-pre::-webkit-scrollbar {
+      height: 5px;
+    }
+
+    .tk-pre::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .tk-pre::-webkit-scrollbar-thumb {
+      background: oklch(var(--color-base-content) / 0.1);
+      border-radius: 3px;
+    }
+
+    /* Copy button */
+    .tk-copy-btn {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      border: 1px solid oklch(var(--color-base-content) / 0.08);
+      background: oklch(var(--color-base-100));
+      color: oklch(var(--color-base-content) / 0.3);
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.2s, color 0.2s, border-color 0.2s;
+    }
+
+    .tk-code-block:hover .tk-copy-btn {
+      opacity: 1;
+    }
+
+    .tk-copy-btn:hover {
+      border-color: var(--tk-accent);
+      color: var(--tk-accent);
+    }
+
+    .tk-copy-btn.copied {
+      opacity: 1;
+      color: oklch(var(--color-success));
+      border-color: oklch(var(--color-success) / 0.2);
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 1024px) {
+      .tk-sidebar {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: auto;
+        max-height: none;
+        z-index: 900;
+        background: color-mix(in srgb, oklch(var(--color-base-100)) 98%, transparent);
+        backdrop-filter: blur(16px);
+        padding: 5rem 2rem 2rem;
+        overflow-y: auto;
+      }
+
+      .tk-sidebar.open {
+        display: block;
+      }
+
+      .tk-sidebar-toggle {
+        display: inline-flex;
+      }
+
+      .tk-sidebar-footer {
+        flex-direction: row;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .tk-page { padding: 5.5rem 0 3rem; }
+      .tk-title { font-size: 1.75rem; }
+      .tk-section { padding: 1.25rem; }
+      .tk-pre { font-size: 0.75rem; padding: 0.75rem; }
+      .tk-layout { gap: 0; }
+    }
+  </style>
+</BaseLayout>

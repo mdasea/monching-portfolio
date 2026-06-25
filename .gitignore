@@ -1,0 +1,12 @@
+node_modules/
+dist/
+public/knowledge-base.json
+.vercel
+.astro
+.playwright-mcp
+/hero-fixed.png
+/page-weird.png
+/portfolio-dark-hero.png
+/portfolio-full.png
+/portfolio-fullpage.png
+/portfolio-light-hero.png

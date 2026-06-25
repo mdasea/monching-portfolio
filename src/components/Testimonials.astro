@@ -1,0 +1,142 @@
+---
+interface Testimonial {
+  quote: string;
+  author: string;
+  role: string;
+  initials: string;
+}
+
+const testimonials: Testimonial[] = [
+  {
+    quote: "I wholeheartedly recommend Monching for any professional opportunity. Their skills, attitude, and dedication to their work make them an invaluable asset. I am confident that he will excel in any endeavor he will undertake.",
+    author: "Kent Joshua Nesus",
+    role: "Colleague at Ease Solutions",
+    initials: "KN",
+  },
+  {
+    quote: "I had the pleasure of collaborating with Monching during a recent hackathon, and I was genuinely impressed by his technical expertise and dedication, particularly in frontend development. He took the initiative to design and implement our project's initial UI/UX templates, setting a strong foundation for the entire team.",
+    author: "Mirza Abdullah Tariq",
+    role: "Teammate, Trae AI Hackathon",
+    initials: "MA",
+  },
+  {
+    quote: "I had the opportunity to work with Monching and he is the best in his role. He has really great knowledge in the tech and I find him very skillful. Not only that he is supportive and was always there to help me and teach the thing that I don't know.",
+    author: "Aaryab Panta",
+    role: "Teammate, Trae AI Hackathon",
+    initials: "AP",
+  },
+  {
+    quote: "I had the pleasure of working alongside Monching during the hackathon, where he served as a core frontend developer. His expertise in React.js and seamless integration of APIs played a pivotal role in bringing our solution to life. His technical depth, consistent GitHub contributions, and commitment to delivering quality work under tight deadlines was truly commendable.",
+    author: "Hammad Zaheer",
+    role: "Teammate, Trae AI Hackathon",
+    initials: "HZ",
+  },
+];
+---
+
+<section class="section" id="testimonials">
+  <div class="container">
+    <div class="reveal">
+      <h2 class="section-title">What People <span class="gradient-text">Say</span></h2>
+      <p class="section-subtitle">Recommendations from colleagues and teammates</p>
+    </div>
+    <div class="test-grid">
+      {testimonials.map((t) => (
+        <div class="test-card reveal reveal-delay-1">
+          <svg class="test-quote" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" opacity="0.15"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151C7.546 6.068 5.983 8.789 5.983 11H10v10H0z"/></svg>
+          <p class="test-text">{t.quote}</p>
+          <div class="test-footer">
+            <div class="test-avatar">{t.initials}</div>
+            <div class="test-info">
+              <span class="test-author">{t.author}</span>
+              <span class="test-role">{t.role}</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .test-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .test-card {
+    position: relative;
+    padding: 1.5rem;
+    border-radius: 12px;
+    background: oklch(var(--color-base-200) / 0.3);
+    border: 1px solid oklch(var(--color-base-content) / 0.06);
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .test-card:hover {
+    border-color: oklch(var(--color-primary) / 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px oklch(var(--color-primary) / 0.06);
+  }
+
+  .test-quote {
+    margin-bottom: 0.75rem;
+    color: oklch(var(--color-primary));
+    flex-shrink: 0;
+  }
+
+  .test-text {
+    font-size: 0.9rem;
+    line-height: 1.75;
+    opacity: 0.7;
+    font-style: italic;
+    margin-bottom: 1.25rem;
+    flex: 1;
+  }
+
+  .test-footer {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-top: 1rem;
+    border-top: 1px solid oklch(var(--color-base-content) / 0.06);
+  }
+
+  .test-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #4f7df3, #8b5cf6);
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .test-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.05rem;
+  }
+
+  .test-author {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: oklch(var(--color-primary));
+  }
+
+  .test-role {
+    font-size: 0.75rem;
+    opacity: 0.45;
+  }
+
+  @media (max-width: 768px) {
+    .test-grid { grid-template-columns: 1fr; }
+  }
+</style>

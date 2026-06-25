@@ -1,0 +1,150 @@
+---
+interface Service {
+  icon: string;
+  title: string;
+  description: string;
+  tags: string[];
+  toolkitLink?: string;
+}
+
+const services: Service[] = [
+    {
+      icon: '\u{2699}',
+      title: 'Full Stack Development',
+      description: 'End-to-end web application development using Java/Spring on the backend and React/Vue on the frontend. I build scalable, maintainable systems that handle real-world traffic.',
+      tags: ['Java 17', 'Spring', 'React', 'Vue', 'REST APIs'],
+      toolkitLink: '/toolkit/development',
+    },
+    {
+      icon: '\u{1F916}',
+      title: 'AI Integration & Automation',
+      description: 'Integrate AI capabilities into your workflow — from LLM-powered features and intelligent agents to automated pipelines using modern AI tools and APIs.',
+      tags: ['Claude', 'OpenAI', 'AI Agents', 'RAG', 'Automation'],
+      toolkitLink: '/toolkit/ai-automation',
+    },
+  {
+    icon: '\u{26A1}',
+    title: 'Performance Optimization',
+    description: 'Identify and fix performance bottlenecks in existing systems. I have a proven track record of achieving 70-80% API performance improvements through algorithmic optimization and migration.',
+    tags: ['Profiling', 'Caching', 'Query Optimization', 'Migration'],
+  },
+  {
+    icon: '\u{1F4BB}',
+    title: 'Custom Software Development',
+    description: 'From concept to deployment — I build tailored software solutions including Jira plugins, web stores, AI-powered search tools, and community platforms.',
+    tags: ['Full Lifecycle', 'Agile/Scrum', 'CI/CD', 'Cloud Deploy'],
+  },
+];
+---
+
+<section class="section" id="services">
+  <div class="container">
+    <div class="reveal">
+      <h2 class="section-title">What I <span class="gradient-text">Offer</span></h2>
+      <p class="section-subtitle">Services for your next project</p>
+    </div>
+    <div class="services-grid">
+      {services.map((s, i) => (
+        <div class="service-card card-custom reveal" class:list={{ 'reveal-delay-1': i > 0 }}>
+          <div class="service-icon">{s.icon}</div>
+          <h3 class="service-title">{s.title}</h3>
+          <p class="service-desc">{s.description}</p>
+          <div class="service-tags">
+            {s.tags.map(t => <span class="tag-custom">{t}</span>)}
+          </div>
+          {s.toolkitLink && (
+            <a href={s.toolkitLink} target="_blank" class="service-toolkit-link">
+              View toolkit
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+            </a>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .service-card {
+    padding: 1.75rem;
+    background: oklch(var(--color-base-200) / 0.3);
+    border: 1px solid oklch(var(--color-base-content) / 0.08);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px oklch(var(--color-primary) / 0.06);
+  }
+
+  .service-icon {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: oklch(var(--color-primary) / 0.06);
+    border: 1px solid oklch(var(--color-base-content) / 0.08);
+  }
+
+  .service-card:hover .service-icon {
+    border-color: oklch(var(--color-primary));
+    background: oklch(var(--color-primary) / 0.1);
+  }
+
+  .service-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+  }
+
+  .service-desc {
+    font-size: 0.88rem;
+    opacity: 0.65;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    flex: 1;
+  }
+
+  .service-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .service-toolkit-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: oklch(var(--color-primary));
+    text-decoration: none;
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    border: 1px solid oklch(var(--color-primary) / 0.2);
+    transition: all 0.2s;
+    align-self: flex-start;
+  }
+
+  .service-toolkit-link:hover {
+    background: oklch(var(--color-primary) / 0.08);
+    border-color: oklch(var(--color-primary));
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 768px) {
+    .services-grid { grid-template-columns: 1fr; }
+  }
+</style>

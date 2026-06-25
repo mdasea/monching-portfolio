@@ -1,0 +1,9 @@
+name = "monching-portfolio-chat"
+main = "src/index.ts"
+compatibility_date = "2025-01-01"
+
+[vars]
+MODEL = "deepseek-v4-flash"
+
+[[env]]
+[env.production]
