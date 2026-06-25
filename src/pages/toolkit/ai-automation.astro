@@ -292,6 +292,20 @@ Authorization: Bearer {{api_key}}
   }]
 }`;
 
+const lovableRef = `# Lovable.dev - AI Full-Stack App Builder
+
+Lovable generates full-stack web apps from natural language.
+It's an AI-powered IDE with built-in Supabase integration,
+visual editor, and one-click deploy.
+
+Use it for:
+- Rapid prototyping & MVP development
+- Apps with auth, DB, and storage (Supabase)
+- Admin dashboards and CRUD tools
+- Vibe coding with AI-first workflow
+
+→ https://lovable.dev`;
+
 const extractPipeline = `async function extractPipeline(url: string) {
   const res = await fetch(url);
   const html = await res.text();
@@ -430,6 +444,7 @@ const tocItems = [
       <details class="tk-detail"><summary>Tavus &mdash; video generation</summary><div class="tk-code-block"><pre class="tk-pre" set:html={tavusApi}></pre></div></details>
       <details class="tk-detail"><summary>RESEND &mdash; transactional email</summary><div class="tk-code-block"><pre class="tk-pre" set:html={resendApi}></pre></div></details>
       <details class="tk-detail"><summary>HeyGen &mdash; AI video</summary><div class="tk-code-block"><pre class="tk-pre" set:html={heygenApi}></pre></div></details>
+      <details class="tk-detail"><summary>Lovable.dev &mdash; AI app builder</summary><div class="tk-code-block"><pre class="tk-pre" set:html={lovableRef}></pre></div></details>
     </div>
 
     <div class="tk-section" id="workflows">
