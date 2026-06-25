@@ -1,0 +1,160 @@
+---
+import ToolkitLayout from '../../layouts/ToolkitLayout.astro';
+
+const gettingStarted = `# 1. Go to https://lovable.dev and sign in with GitHub
+
+# 2. Click "Create new project"
+# 3. Describe your app in natural language
+#    e.g. "A task management app with drag-and-drop boards,
+#    user authentication, and shared workspaces"
+
+# 4. Lovable generates the full app instantly
+# 5. Edit with chat prompts or the visual editor`;
+
+const vision = `GOAL: Build a habit tracker with streaks, reminders,
+and social features for friends.
+
+DESIRED TECH STACK:
+- React + TypeScript frontend
+- Supabase for auth + database
+- Tailwind CSS for styling`;
+
+const iterative = `# Start broad, then refine
+Prompt 1: "Create a landing page for a SaaS product
+  called FlowTrack that helps teams manage workflows"
+
+Prompt 2: "Add a pricing section with three tiers:
+  Starter ($9/mo), Pro ($29/mo), Enterprise (custom)"`;
+
+const fixPrompt = `# Instead of "Fix the button"
+# Be specific about what you want
+
+Good:  "Change the primary CTA button to use indigo-600
+        background with white text, add a hover effect
+        that darkens it slightly"
+
+Good:  "The form validation isn't working — when I submit
+        with empty fields, show inline error messages
+        below each field in red"
+
+Good:  "Refactor this component into smaller reusable
+        pieces: split the header, form, and results
+        into separate components in a /components folder"`;
+
+const supabase = `# Prompt template for Supabase setup
+"I need a Supabase backend with:
+- Users table (id, email, name, avatar_url)
+- Authentication via magic link
+- Row Level Security policies so users
+  can only see their own data
+- A public API endpoint for fetching
+  user profiles"`;
+
+const deploy = `# Lovable deploys automatically via Netlify
+# Your app gets a .lovable.app URL instantly
+
+# Custom domain:
+Settings → Domain → Add custom domain
+
+# Environment variables (for API keys, etc.):
+Settings → Environment Variables
+
+# To connect your own Supabase project:
+Project Settings → Integrations → Supabase
+→ Connect existing project`;
+
+const devWorkflow = `# Recommended workflow for complex projects
+
+1. PLAN FIRST
+   Write a detailed spec before generating
+
+2. BUILD IN LAYERS
+   - Start with data model & auth
+   - Build core features one at a time
+   - Add UI polish last
+
+3. VERSION CONTROL
+   - Lovable creates a GitHub repo automatically
+   - Commit regularly via Lovable
+   - Use branches for experiments
+
+4. INSPECT & ITERATE
+   - Review generated code before accepting
+   - Test in preview mode
+   - Prompt for fixes systematically`;
+---
+
+<ToolkitLayout
+  title="Lovable Toolkit — Monching Desierto"
+  description="Quickstart references, prompt patterns, and workflows for Lovable.dev"
+  tocItems={[
+    { id: 'getting-started', label: 'Getting Started' },
+    { id: 'prompts', label: 'Prompt Patterns' },
+    { id: 'iterative', label: 'Iterative Building' },
+    { id: 'fixing', label: 'Fixing & Refining' },
+    { id: 'supabase', label: 'Supabase Integration' },
+    { id: 'deploy', label: 'Deploy & Settings' },
+    { id: 'workflow', label: 'Dev Workflow' },
+  ]}
+  accent="secondary"
+>
+  <span slot="title">Lovable<span class="gradient-text">.dev</span></span>
+
+  <div class="tk-grid">
+    <div class="tk-section" id="getting-started">
+      <h2 class="tk-section-title">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+        Getting Started
+      </h2>
+      <details class="tk-detail"><summary>Quick start</summary><div class="tk-code-block"><pre class="tk-pre" set:html={gettingStarted}></pre></div></details>
+    </div>
+
+    <div class="tk-section" id="prompts">
+      <h2 class="tk-section-title">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="14 2 18 6 7 17 3 17 3 13 14 2"/><line x1="3" y1="22" x2="21" y2="22"/></svg>
+        Prompt Patterns
+      </h2>
+      <details class="tk-detail"><summary>Clear vision prompt template</summary><div class="tk-code-block"><pre class="tk-pre" set:html={vision}></pre></div></details>
+    </div>
+
+    <div class="tk-section" id="iterative">
+      <h2 class="tk-section-title">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+        Iterative Building
+      </h2>
+      <details class="tk-detail"><summary>Start broad, refine step by step</summary><div class="tk-code-block"><pre class="tk-pre" set:html={iterative}></pre></div></details>
+    </div>
+
+    <div class="tk-section" id="fixing">
+      <h2 class="tk-section-title">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        Fixing &amp; Refining
+      </h2>
+      <details class="tk-detail"><summary>How to prompt for fixes</summary><div class="tk-code-block"><pre class="tk-pre" set:html={fixPrompt}></pre></div></details>
+    </div>
+
+    <div class="tk-section" id="supabase">
+      <h2 class="tk-section-title">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+        Supabase Integration
+      </h2>
+      <details class="tk-detail"><summary>Prompting for Supabase backend</summary><div class="tk-code-block"><pre class="tk-pre" set:html={supabase}></pre></div></details>
+    </div>
+
+    <div class="tk-section" id="deploy">
+      <h2 class="tk-section-title">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        Deploy &amp; Settings
+      </h2>
+      <details class="tk-detail"><summary>Deployment &amp; custom domain</summary><div class="tk-code-block"><pre class="tk-pre" set:html={deploy}></pre></div></details>
+    </div>
+
+    <div class="tk-section" id="workflow">
+      <h2 class="tk-section-title">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Dev Workflow
+      </h2>
+      <details class="tk-detail"><summary>Recommended workflow for complex projects</summary><div class="tk-code-block"><pre class="tk-pre" set:html={devWorkflow}></pre></div></details>
+    </div>
+  </div>
+</ToolkitLayout>
