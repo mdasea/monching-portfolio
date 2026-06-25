@@ -292,19 +292,78 @@ Authorization: Bearer {{api_key}}
   }]
 }`;
 
-const lovableRef = `# Lovable.dev - AI Full-Stack App Builder
+const lovableWhat = `Lovable.dev is an AI-powered IDE that generates
+full-stack web applications from natural language prompts.
+It combines a chat interface, visual editor, and built-in
+infrastructure (Supabase, Netlify) for rapid app development.
 
-Lovable generates full-stack web apps from natural language.
-It's an AI-powered IDE with built-in Supabase integration,
-visual editor, and one-click deploy.
+Think of it as an AI development platform where you describe
+what you want to build, and it generates the entire stack —
+frontend, backend, database, auth, deployment — instantly.
 
-Use it for:
-- Rapid prototyping & MVP development
-- Apps with auth, DB, and storage (Supabase)
-- Admin dashboards and CRUD tools
-- Vibe coding with AI-first workflow
+KEY FEATURES:
+- Natural language to working app in minutes
+- Built-in Supabase (auth, PostgreSQL, storage)
+- Visual drag-and-drop editor for UI
+- Automatic GitHub repo creation per project
+- One-click deploy via Netlify
+- Iterative editing through chat prompts
+- Real-time preview as you build`;
 
-→ https://lovable.dev`;
+const lovableStart = `1. Go to https://lovable.dev and sign in with GitHub
+
+2. Click "Create new project"
+
+3. Describe your app in natural language:
+   "A project management app with kanban boards,
+    team workspaces, task assignments, and
+    real-time activity feed"
+
+4. Lovable generates the full app instantly
+
+5. Refine with follow-up prompts:
+   "Add drag-and-drop to reorder tasks"
+   "Change the color scheme to indigo"
+   "Add a comments section to each task"`;
+
+const lovablePrompts = `# Tips for better results
+
+START WITH A CLEAR VISION
+Write a detailed spec before generating:
+"Build a habit tracker with daily check-ins,
+ streak tracking, social leaderboard, and
+ push notifications via email"
+
+BUILD INCREMENTALLY
+Focus on one feature at a time rather than
+trying to build everything at once.
+
+BE SPECIFIC WITH FIXES
+Instead of "Fix the layout", try:
+"Make the sidebar collapsible with a toggle
+ button at the top, and center the main
+ content when sidebar is closed"
+
+USE THE VISUAL EDITOR
+For UI tweaks, use Lovable's visual editor
+to drag and adjust elements directly.
+
+REVIEW GENERATED CODE
+Check the code Lovable produces — it's a
+great way to learn and catch issues early.`;
+
+const lovableSupabase = `Lovable has built-in Supabase integration.
+
+When you create a project, you can:
+- Enable Supabase auth (magic link, OAuth)
+- Create database tables from prompts
+  "Add a tasks table with title, status, assignee"
+- Set up Row Level Security policies
+- Use Supabase storage for file uploads
+- Query data via the auto-generated API
+
+You can also connect your own Supabase project
+for more control over the schema and settings.`;
 
 const extractPipeline = `async function extractPipeline(url: string) {
   const res = await fetch(url);
@@ -374,6 +433,7 @@ const tocItems = [
   { id: 'agents', label: 'AI Agents & Tool Use' },
   { id: 'rag', label: 'RAG Pipeline' },
   { id: 'mcp', label: 'MCP' },
+  { id: 'lovable', label: 'Lovable.dev' },
   { id: 'platforms', label: 'Platform APIs' },
   { id: 'workflows', label: 'Automation Workflows' },
 ];
@@ -435,6 +495,17 @@ const tocItems = [
       <details class="tk-detail"><summary>OpenCode MCP config</summary><div class="tk-code-block"><pre class="tk-pre" set:html={mcpOcConfig}></pre></div></details>
     </div>
 
+    <div class="tk-section" id="lovable">
+      <h2 class="tk-section-title">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        Lovable.dev
+      </h2>
+      <details class="tk-detail"><summary>What is Lovable?</summary><div class="tk-code-block"><pre class="tk-pre" set:html={lovableWhat}></pre></div></details>
+      <details class="tk-detail"><summary>Getting started</summary><div class="tk-code-block"><pre class="tk-pre" set:html={lovableStart}></pre></div></details>
+      <details class="tk-detail"><summary>Prompt patterns &amp; tips</summary><div class="tk-code-block"><pre class="tk-pre" set:html={lovablePrompts}></pre></div></details>
+      <details class="tk-detail"><summary>Supabase integration</summary><div class="tk-code-block"><pre class="tk-pre" set:html={lovableSupabase}></pre></div></details>
+    </div>
+
     <div class="tk-section" id="platforms">
       <h2 class="tk-section-title">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
@@ -444,7 +515,6 @@ const tocItems = [
       <details class="tk-detail"><summary>Tavus &mdash; video generation</summary><div class="tk-code-block"><pre class="tk-pre" set:html={tavusApi}></pre></div></details>
       <details class="tk-detail"><summary>RESEND &mdash; transactional email</summary><div class="tk-code-block"><pre class="tk-pre" set:html={resendApi}></pre></div></details>
       <details class="tk-detail"><summary>HeyGen &mdash; AI video</summary><div class="tk-code-block"><pre class="tk-pre" set:html={heygenApi}></pre></div></details>
-      <details class="tk-detail"><summary>Lovable.dev &mdash; AI app builder</summary><div class="tk-code-block"><pre class="tk-pre" set:html={lovableRef}></pre></div></details>
     </div>
 
     <div class="tk-section" id="workflows">
