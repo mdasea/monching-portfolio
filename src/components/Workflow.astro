@@ -1,4 +1,6 @@
 ---
+import { icons } from '../lib/icons';
+
 interface Step {
   num: string;
   icon: string;
@@ -7,10 +9,10 @@ interface Step {
 }
 
 const steps: Step[] = [
-  { num: '01', icon: '\u{1F4AC}', title: 'Discovery Call', desc: 'We discuss your project goals, requirements, and timeline. I ask the right questions to understand the scope and suggest the best approach.' },
-  { num: '02', icon: '\u{1F4CB}', title: 'Planning & Proposal', desc: 'I outline the architecture, tech stack, milestones, and deliverables. You get a clear roadmap and fixed-price or hourly estimate before any work begins.' },
-  { num: '03', icon: '\u{1F3D7}', title: 'Development & Sprints', desc: 'I build your solution in iterative sprints with regular demos and check-ins. You see progress weekly and can provide feedback at every stage.' },
-  { num: '04', icon: '\u{1F680}', title: 'Deploy & Support', desc: 'I deploy to production, hand over documentation, and provide post-launch support. Your project is live, tested, and ready to scale.' },
+  { num: '01', icon: icons.messageCircle, title: 'Discovery Call', desc: 'We discuss your project goals, requirements, and timeline. I ask the right questions to understand the scope and suggest the best approach.' },
+  { num: '02', icon: icons.clipboard, title: 'Planning & Proposal', desc: 'I outline the architecture, tech stack, milestones, and deliverables. You get a clear roadmap and fixed-price or hourly estimate before any work begins.' },
+  { num: '03', icon: icons.building, title: 'Development & Sprints', desc: 'I build your solution in iterative sprints with regular demos and check-ins. You see progress weekly and can provide feedback at every stage.' },
+  { num: '04', icon: icons.rocket, title: 'Deploy & Support', desc: 'I deploy to production, hand over documentation, and provide post-launch support. Your project is live, tested, and ready to scale.' },
 ];
 ---
 
@@ -26,7 +28,7 @@ const steps: Step[] = [
           <div class="workflow-num">{s.num}</div>
           <div class="workflow-body">
             <div class="workflow-icon-wrap">
-              <span class="workflow-icon">{s.icon}</span>
+              <span class="workflow-icon" set:html={s.icon}></span>
             </div>
             <h3 class="workflow-title">{s.title}</h3>
             <p class="workflow-desc">{s.desc}</p>
@@ -93,7 +95,11 @@ const steps: Step[] = [
     border-radius: 12px;
     background: oklch(var(--color-primary) / 0.06);
     margin: 0 auto 0.75rem;
-    font-size: 1.4rem;
+  }
+
+  .workflow-icon-wrap svg {
+    width: 22px;
+    height: 22px;
   }
 
   .workflow-step:hover .workflow-icon-wrap {

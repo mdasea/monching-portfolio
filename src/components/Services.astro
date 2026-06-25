@@ -1,4 +1,6 @@
 ---
+import { icons } from '../lib/icons';
+
 interface Service {
   icon: string;
   title: string;
@@ -9,27 +11,27 @@ interface Service {
 
 const services: Service[] = [
     {
-      icon: '\u{2699}',
+      icon: icons.monitor,
       title: 'Full Stack Development',
       description: 'End-to-end web application development using Java/Spring on the backend and React/Vue on the frontend. I build scalable, maintainable systems that handle real-world traffic.',
       tags: ['Java 17', 'Spring', 'React', 'Vue', 'REST APIs'],
       toolkitLink: '/toolkit/development',
     },
     {
-      icon: '\u{1F916}',
+      icon: icons.bot,
       title: 'AI Integration & Automation',
       description: 'Integrate AI capabilities into your workflow — from LLM-powered features and intelligent agents to automated pipelines using modern AI tools and APIs.',
       tags: ['Claude', 'OpenAI', 'AI Agents', 'RAG', 'Automation'],
       toolkitLink: '/toolkit/ai-automation',
     },
   {
-    icon: '\u{26A1}',
+    icon: icons.zap,
     title: 'Performance Optimization',
     description: 'Identify and fix performance bottlenecks in existing systems. I have a proven track record of achieving 70-80% API performance improvements through algorithmic optimization and migration.',
     tags: ['Profiling', 'Caching', 'Query Optimization', 'Migration'],
   },
   {
-    icon: '\u{1F4BB}',
+    icon: icons.settings,
     title: 'Custom Software Development',
     description: 'From concept to deployment — I build tailored software solutions including Jira plugins, web stores, AI-powered search tools, and community platforms.',
     tags: ['Full Lifecycle', 'Agile/Scrum', 'CI/CD', 'Cloud Deploy'],
@@ -46,7 +48,7 @@ const services: Service[] = [
     <div class="services-grid">
       {services.map((s, i) => (
         <div class="service-card card-custom reveal" class:list={{ 'reveal-delay-1': i > 0 }}>
-          <div class="service-icon">{s.icon}</div>
+          <div class="service-icon" set:html={s.icon}></div>
           <h3 class="service-title">{s.title}</h3>
           <p class="service-desc">{s.description}</p>
           <div class="service-tags">
@@ -85,7 +87,6 @@ const services: Service[] = [
   }
 
   .service-icon {
-    font-size: 2rem;
     margin-bottom: 0.75rem;
     width: 48px;
     height: 48px;
@@ -95,6 +96,11 @@ const services: Service[] = [
     border-radius: 10px;
     background: oklch(var(--color-primary) / 0.06);
     border: 1px solid oklch(var(--color-base-content) / 0.08);
+  }
+
+  .service-icon svg {
+    width: 22px;
+    height: 22px;
   }
 
   .service-card:hover .service-icon {
