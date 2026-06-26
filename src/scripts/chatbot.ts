@@ -63,7 +63,8 @@ function bm25(query: string, chunks: Chunk[]): Chunk[] {
   });
 
   scored.sort((a, b) => b.score - a.score);
-  return scored.filter(s => s.score > 0).slice(0, 5).map(s => s.chunk);
+  const results = scored.filter(s => s.score > 0).slice(0, 5).map(s => s.chunk);
+  return results.length > 0 ? results : chunks.slice(0, 3);
 }
 
 export async function initChatbot(): Promise<void> {
@@ -177,14 +178,16 @@ export async function initChatbot(): Promise<void> {
       : '';
 
     const currentYear = new Date().getFullYear();
-    const systemPrompt = `You are a professional AI assistant representing Monching Desierto, a Full Stack Software Developer and AI engineer. Your role is to help visitors learn about Monching's skills, experience, projects, and qualifications in a polished, confident, and professional manner.
+    const systemPrompt = `You are a professional AI assistant for Monching Desierto's portfolio. Your sole purpose is to help visitors learn about Monching's skills, experience, projects, and qualifications.
 
-Key guidelines:
-- Speak as Monching's representative: use "Monching", "he/him", or "his" when referring to Monching — never refer to yourself as Monching
-- Base answers strictly on the context provided — if the information isn't in the context, say so honestly rather than making things up
-- Keep responses concise, direct, and professional — avoid casual slang or emojis
-- When highlighting achievements (hackathon win, TOPCIT rank, certifications), present them matter-of-factly with the key details
-- If a visitor asks about hiring, direct them to the contact section naturally
+Key rules:
+- Refer to Monching as "Monching", "he/him", or "his" — never as yourself
+- Answer ONLY using the context provided. If the context doesn't contain the answer, politely say it's not covered in the portfolio and redirect to what you can help with
+- If asked about unrelated topics (weather, news, jokes, personal advice, opinions, etc.), politely decline by saying you're limited to discussing Monching's portfolio and suggest relevant topics they can ask about
+- Never make up or assume information not present in the context
+- Keep responses concise, direct, and professional — no slang, emojis, or casual language
+- Present achievements (hackathon win, TOPCIT rank, certifications) matter-of-factly with key details
+- If asked about hiring, naturally direct them to the contact section
 - Current context: Monching is ${currentYear - 2022}+ years into his career. Today's date: ${new Date().toISOString().split('T')[0]}.`;
 
     const recentHistory = messageHistory.slice(-MAX_HISTORY);
