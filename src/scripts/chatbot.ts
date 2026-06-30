@@ -284,6 +284,13 @@ Key rules:
     panel.classList.toggle('chatbot-hidden', !isOpen);
     trigger.classList.toggle('chatbot-hidden', isOpen);
     hideTooltip();
+
+    // Push back-to-top button up when panel is open
+    const btop = document.getElementById('backToTop');
+    if (btop) {
+      btop.classList.toggle('btop-raised', isOpen);
+    }
+
     if (isOpen) input.focus();
   }
 

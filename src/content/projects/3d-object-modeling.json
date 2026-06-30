@@ -1,0 +1,7 @@
+{
+  "title": "3D Object Modeling through Phone Scan",
+  "description": "Turn a camera-scanned object into a 3D model. Research project associated with Cebu Institute of Technology.",
+  "tags": ["Point Clouds", "Android", "Computer Vision", "3D Modeling"],
+  "accent": "#f59e0b",
+  "icon": "smartphone"
+}

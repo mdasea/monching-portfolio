@@ -1,0 +1,11 @@
+{
+  "category": "Frontend",
+  "color": "oklch(var(--color-info))",
+  "items": [
+    { "name": "Astro", "description": "Static site generator with islands architecture", "link": "https://astro.build" },
+    { "name": "Vue", "description": "Progressive frontend framework", "link": "https://vuejs.org" },
+    { "name": "React", "description": "UI component library", "link": "https://react.dev" },
+    { "name": "Tailwind CSS", "description": "Utility-first CSS framework", "link": "https://tailwindcss.com" },
+    { "name": "TypeScript", "description": "Typed superset of JavaScript", "link": "https://typescriptlang.org" }
+  ]
+}

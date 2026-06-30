@@ -1,0 +1,28 @@
+{
+  "steps": [
+    {
+      "num": "01",
+      "icon": "messageCircle",
+      "title": "Discovery Call",
+      "desc": "We discuss your project goals, requirements, and timeline. I ask the right questions to understand the scope and suggest the best approach."
+    },
+    {
+      "num": "02",
+      "icon": "clipboard",
+      "title": "Planning & Proposal",
+      "desc": "I outline the architecture, tech stack, milestones, and deliverables. You get a clear roadmap and fixed-price or hourly estimate before any work begins."
+    },
+    {
+      "num": "03",
+      "icon": "building",
+      "title": "Development & Sprints",
+      "desc": "I build your solution in iterative sprints with regular demos and check-ins. You see progress weekly and can provide feedback at every stage."
+    },
+    {
+      "num": "04",
+      "icon": "rocket",
+      "title": "Deploy & Support",
+      "desc": "I deploy to production, hand over documentation, and provide post-launch support. Your project is live, tested, and ready to scale."
+    }
+  ]
+}

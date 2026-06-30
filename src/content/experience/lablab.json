@@ -1,0 +1,21 @@
+{
+  "company": "lablab.ai",
+  "initials": "LA",
+  "location": "Remote",
+  "period": "June 2025",
+  "link": "https://lablab.ai/",
+  "logoSrc": "/lablab-logo.png",
+  "roles": [
+    {
+      "title": "Agentic AI Developer (Hackathon Project)",
+      "duration": "June 2025",
+      "highlights": [
+        "Vibe coded a full web app project with 5 international members using Trae AI IDE and Novita AI API",
+        "Led the implementation of AI IDE usage and LLM model integration across the team",
+        "Established the vibe coding workflow: git branching, AI-assisted requirements planning, phase-by-phase implementation, bug fixing, and collaborative PR merging",
+        "Built the entire frontend and integrated Novita AI API",
+        "Demonstrated frontend features and development process to judges"
+      ]
+    }
+  ]
+}

@@ -6,7 +6,10 @@ export interface Props {
   description?: string;
 }
 
-const { title = 'Monching Desierto — Portfolio', description = 'Full Stack Software Developer | Java EE/Spring | React/Vue | AI Enthusiast' } = Astro.props;
+const {
+  title = 'Monching Desierto — Portfolio',
+  description = 'Full Stack Software Developer specializing in Java/Spring, React/Vue, and AI integration.'
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -21,8 +24,6 @@ const { title = 'Monching Desierto — Portfolio', description = 'Full Stack Sof
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://monchingdesierto.github.io" />
     <meta property="og:image" content="https://monchingdesierto.github.io/og-image.png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
@@ -31,7 +32,7 @@ const { title = 'Monching Desierto — Portfolio', description = 'Full Stack Sof
     <link rel="sitemap" href="/sitemap.xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Person",
@@ -41,25 +42,12 @@ const { title = 'Monching Desierto — Portfolio', description = 'Full Stack Sof
       "url": "https://monchingdesierto.github.io",
       "image": "https://monchingdesierto.github.io/profile.jpg",
       "email": "desiertomonchingb@gmail.com",
-      "telephone": "+639562206467",
       "jobTitle": "Full Stack Software Developer",
-      "description": "Full Stack Software Developer specializing in Java/Spring, React/Vue, and AI integration. TOPCIT Top 10, PhilNITS FE Passer, Cum Laude.",
-      "knowsAbout": ["Java", "Spring", "React", "Vue", "Artificial Intelligence", "Software Development", "REST APIs", "Agile"],
-      "alumniOf": [
-        { "@type": "CollegeOrUniversity", "name": "Mapúa University" },
-        { "@type": "CollegeOrUniversity", "name": "Cebu Institute of Technology - University" }
-      ],
-      "award": [
-        "1st Place - Trae AI IDE: Zero Limits Hackathon (879 teams)",
-        "Top 10 National Rank - TOPCIT Exam",
-        "Cum Laude - Cebu Institute of Technology",
-        "PhilNITS FE Passer",
-        "1st Runner-Up - IT Olympics Java Programming"
-      ],
+      "description": "Full Stack Software Developer specializing in Java/Spring, React/Vue, and AI integration.",
+      "knowsAbout": ["Java", "Spring", "React", "Vue", "Artificial Intelligence", "Software Development"],
       "sameAs": [
         "https://www.linkedin.com/in/monchingdesierto",
-        "https://github.com/mdasea",
-        "https://github.com/monde1999"
+        "https://github.com/mdasea"
       ]
     })} />
     <title>{title}</title>
@@ -67,19 +55,13 @@ const { title = 'Monching Desierto — Portfolio', description = 'Full Stack Sof
   <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
     <slot />
-
-    <button
-      class="btop"
-      id="backToTop"
-      aria-label="Back to top"
-    >
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+    <button class="btop" id="backToTop" aria-label="Back to top">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
     </button>
   </body>
 </html>
 
 <script>
-  // Theme init — must run before paint
   (function() {
     const saved = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -92,108 +74,28 @@ const { title = 'Monching Desierto — Portfolio', description = 'Full Stack Sof
 <script defer data-domain="monchingdesierto.github.io" src="https://plausible.io/js/script.js"></script>
 
 <script>
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
+  document.addEventListener('DOMContentLoaded', () => {
+    // Back to top
+    const btn = document.getElementById('backToTop');
+    if (btn) {
+      window.addEventListener('scroll', () => {
+        btn.classList.toggle('visible', window.scrollY > 300);
+      }, { passive: true });
+      btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    // Scroll reveal animations
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
         }
-      });
-    },
-    { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
-  );
+      }
+    }, { threshold: 0.05, rootMargin: '0px 0px 0px 0px' });
 
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.reveal').forEach((el, i) => {
-      observer.observe(el);
-    });
-
-    const btn = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-      btn?.classList.toggle('visible', window.scrollY > 300);
-    }, { passive: true });
-    btn?.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   });
 </script>
-
-<style is:global>
-  html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
-
-  .skip-link {
-    position: fixed;
-    top: -100%;
-    left: 1rem;
-    padding: 0.5rem 1rem;
-    background: oklch(var(--color-primary));
-    color: #fff;
-    border-radius: 0 0 8px 8px;
-    font-size: 0.88rem;
-    font-weight: 600;
-    z-index: 10000;
-    text-decoration: none;
-    transition: top 0.2s;
-  }
-
-  .skip-link:focus {
-    top: 0;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    *, *::before, *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-    }
-    .reveal { opacity: 1 !important; transform: none !important; }
-  }
-
-  body, .navbar-custom, .theme-toggle * {
-    transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
-  }
-
-  *:focus-visible {
-    outline: 2px solid oklch(var(--color-primary));
-    outline-offset: 2px;
-    border-radius: 4px;
-  }
-  .btop {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.3s;
-    z-index: 999;
-    pointer-events: none;
-    border: 1px solid oklch(var(--color-base-content) / 0.15);
-    background: oklch(var(--color-base-100));
-    color: oklch(var(--color-base-content) / 0.6);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-  }
-
-  .btop.visible {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-  }
-
-  .btop:hover {
-    border-color: oklch(var(--color-primary));
-    color: oklch(var(--color-primary));
-    transform: translateY(-4px);
-    box-shadow: 0 4px 15px oklch(var(--color-primary) / 0.15);
-  }
-
-  @media (max-width: 768px) {
-  }
-</style>

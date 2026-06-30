@@ -1,0 +1,8 @@
+{
+  "title": "AI Search",
+  "description": "A Google-search-like web app powered by AI, built for intelligent query responses and semantic search.",
+  "tags": ["Google Gemini", "Gemini API", "AI Search", "Web App"],
+  "accent": "#3b82f6",
+  "icon": "search",
+  "link": "https://ai-search-6d2a1.web.app/ai-search"
+}

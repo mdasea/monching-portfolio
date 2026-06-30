@@ -1,0 +1,6 @@
+{
+  "icon": "monitor",
+  "title": "Full Stack Development",
+  "description": "End-to-end web application development using Java/Spring on the backend and React/Vue on the frontend. I build scalable, maintainable systems that handle real-world traffic.",
+  "tags": ["Java 17", "Spring", "React", "Vue", "REST APIs"]
+}

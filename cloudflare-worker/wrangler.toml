@@ -4,6 +4,10 @@ compatibility_date = "2025-01-01"
 
 [vars]
 MODEL = "deepseek-v4-flash"
+CONTACT_EMAIL_TO = "desiertomonchingb@gmail.com"
+CONTACT_EMAIL_FROM = "contact@monching-desierto.space"
+# To change the sender, update CONTACT_EMAIL_FROM above to a domain verified
+# in your Resend account (https://resend.com/domains), then deploy.
 
 [[env]]
 [env.production]

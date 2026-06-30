@@ -1,0 +1,61 @@
+{
+  "skillGroups": [
+    {
+      "category": "Backend",
+      "skills": [
+        { "name": "Java 8/17", "level": 95, "color": "oklch(var(--color-error))" },
+        { "name": "Java/Jakarta EE", "level": 90, "color": "oklch(var(--color-error))" },
+        { "name": "Spring", "level": 88, "color": "oklch(var(--color-success))" },
+        { "name": "REST APIs", "level": 92, "color": "oklch(var(--color-primary))" },
+        { "name": "SQL & JPA/Hibernate", "level": 85, "color": "oklch(var(--color-warning))" }
+      ]
+    },
+    {
+      "category": "Frontend",
+      "skills": [
+        { "name": "React", "level": 82, "color": "oklch(var(--color-info))" },
+        { "name": "Vue", "level": 80, "color": "oklch(var(--color-success))" },
+        { "name": "JavaScript ES6+", "level": 88, "color": "oklch(var(--color-warning))" },
+        { "name": "TypeScript", "level": 78, "color": "oklch(var(--color-primary))" },
+        { "name": "HTML/CSS", "level": 85, "color": "oklch(var(--color-warning))" }
+      ]
+    },
+    {
+      "category": "AI & Tools",
+      "skills": [
+        { "name": "Claude / Opencode", "level": 92, "color": "oklch(var(--color-secondary))" },
+        { "name": "Cursor / Lovable / Trae / Junie", "level": 88, "color": "oklch(var(--color-secondary))" },
+        { "name": "Playwright MCP", "level": 85, "color": "oklch(var(--color-info))" },
+        { "name": "Git & Agile/Scrum", "level": 90, "color": "oklch(var(--color-success))" },
+        { "name": "Vibe Coding", "level": 88, "color": "oklch(var(--color-secondary))" }
+      ]
+    },
+    {
+      "category": "Platforms & APIs",
+      "skills": [
+        { "name": "Atlassian SDK / Forge", "level": 88, "color": "oklch(var(--color-primary))" },
+        { "name": "Novita AI API", "level": 82, "color": "oklch(var(--color-secondary))" },
+        { "name": "RESEND API", "level": 78, "color": "oklch(var(--color-info))" },
+        { "name": "Tavus / Heygen AI", "level": 75, "color": "oklch(var(--color-warning))" },
+        { "name": "Lark / Manus AI", "level": 75, "color": "oklch(var(--color-success))" }
+      ]
+    }
+  ],
+  "certifications": [
+    { "name": "Modern Java: Mastering Features from Java 8 to Java 21", "issuer": "Udemy", "date": "2025", "link": "https://ude.my/UC-5bcf25c1-b89f-44a3-8b73-cf1011acb855" },
+    { "name": "Lean Six Sigma Foundations", "issuer": "LinkedIn", "date": "Feb 2025", "link": "https://www.linkedin.com/learning/certificates/4ae2bdb89704559e0c3a9d6c8ab873330bbc32816cf90bb871520d96de66ff06/" },
+    { "name": "React.js Essential Training", "issuer": "LinkedIn", "date": "Sep 2022", "link": "https://www.linkedin.com/learning/certificates/380b0477b515b39464b7e2f8ae05e5c67b9ca0fb800e20bd0cccfb218972a6cd/" },
+    { "name": "Learning TypeScript", "issuer": "LinkedIn", "date": "Sep 2022", "link": "https://www.linkedin.com/learning/certificates/3aa396faeeb4a435b622de91b0a63aee0e846f5b214860afad451a229560b734/" },
+    { "name": "Sustainable Software Architecture", "issuer": "LinkedIn", "date": "Sep 2022", "link": "https://www.linkedin.com/learning/certificates/b5361e81ccbd3f768ea83ffa256c7812e113273dd86257b530a1babd9989968c/" },
+    { "name": "Software Design: Code & Design Smells", "issuer": "LinkedIn", "date": "Sep 2022", "link": "https://www.linkedin.com/learning/certificates/f8e95e33d222aac7f02ffb8e458db4643bdee06dc1440bfd037c00ba3a4a8602/" },
+    { "name": "Learning Vue.js", "issuer": "LinkedIn", "date": "Sep 2022", "link": "https://www.linkedin.com/learning/certificates/05002a8b9bec03bf1b766846188d841b3544d085ac4ec0212a5340e3ff9290ed/" },
+    { "name": "Agile Software Development: Clean Coding Practices", "issuer": "LinkedIn", "date": "Sep 2022", "link": "https://www.linkedin.com/learning/certificates/e81267cbcff9ef15681769da875aa61ac4889c2d41a608e9dc03df96328eb255/" },
+    { "name": "Jira and Confluence Together Badge", "issuer": "Atlassian", "date": "Aug 2022" },
+    { "name": "Spring Boot 2.0 Essential Training", "issuer": "LinkedIn", "date": "Jul 2022", "link": "https://www.linkedin.com/learning/certificates/367441d3a736142b3aae7bb6ea6daba860b744e4058db16d8d5fe7b8f03b5e3a/" },
+    { "name": "Learning Spring with Spring Boot", "issuer": "LinkedIn", "date": "Jul 2022", "link": "https://www.linkedin.com/learning/certificates/50a4618e77cd3bd55f447b231106322e49ab8538632165dfccbc55a3daaea397/" },
+    { "name": "Java 11+ Essential Training", "issuer": "LinkedIn", "date": "2022" },
+    { "name": "Advanced Java Programming", "issuer": "LinkedIn", "date": "2022" },
+    { "name": "Java: Testing with JUnit", "issuer": "LinkedIn", "date": "2022" },
+    { "name": "Java: Data Structures", "issuer": "LinkedIn", "date": "2022" }
+  ]
+}

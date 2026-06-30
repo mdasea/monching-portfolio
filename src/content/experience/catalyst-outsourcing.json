@@ -1,0 +1,18 @@
+{
+  "company": "Catalyst Outsourcing Private Limited",
+  "initials": "CO",
+  "location": "Singapore",
+  "period": "November 2025 — March 2026",
+  "link": "https://catalystoutsourcing.com/",
+  "logoSrc": "/catalyst-logo.svg",
+  "roles": [
+    {
+      "title": "Vibe Coder",
+      "duration": "November 2025 — March 2026",
+      "highlights": [
+        "Built and shipped features using AI-powered development tools",
+        "Tools: Lovable, Claude Code, Cursor, Playwright MCP, RESEND API, Manus AI, Lark, Tavus AI API, Heygen AI"
+      ]
+    }
+  ]
+}

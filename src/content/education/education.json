@@ -1,0 +1,28 @@
+{
+  "schools": [
+    {
+      "name": "Mapúa University",
+      "degree": "Master of Science in Computer Science",
+      "year": "Present",
+      "logoSrc": "/mapua-logo.png",
+      "link": "https://www.mapua.edu.ph/"
+    },
+    {
+      "name": "Cebu Institute of Technology",
+      "degree": "Bachelor of Science in Computer Science",
+      "year": "2018 — 2022",
+      "honors": "Cum Laude · DOST Scholar",
+      "logoSrc": "/cit-logo.png",
+      "link": "https://cit.edu/"
+    }
+  ],
+  "awards": [
+    { "title": "Top 10", "description": "National Rank TOPCIT Exam" },
+    { "title": "1st", "description": "Runner-Up, Java IT Olympics" },
+    { "title": "Champion", "description": "Region VII Coding Challenge" },
+    { "title": "Cum Laude", "description": "Graduation Honors" },
+    { "title": "1st", "description": "AI Hackathon Winner (Global)" },
+    { "title": "Passed", "description": "PhilNITS FE Examination" },
+    { "title": "Scholar", "description": "DOST Scholarship" }
+  ]
+}

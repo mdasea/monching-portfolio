@@ -1,0 +1,11 @@
+{
+  "category": "AI & Productivity Tools",
+  "color": "oklch(var(--color-secondary))",
+  "items": [
+    { "name": "Claude / Opencode", "description": "AI coding assistant and agent framework" },
+    { "name": "Cursor", "description": "AI-native code editor" },
+    { "name": "Git & GitHub", "description": "Version control, CI/CD, collaboration" },
+    { "name": "Docker", "description": "Containerization and reproducible environments", "link": "https://docker.com" },
+    { "name": "MCP", "description": "Model Context Protocol for AI tool integration" }
+  ]
+}

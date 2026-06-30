@@ -1,0 +1,8 @@
+{
+  "title": "Doong Express",
+  "description": "Online web store built with Vue 3 and Firebase, providing a seamless shopping experience.",
+  "tags": ["Vue.js", "Pinia", "Firebase", "E-commerce"],
+  "accent": "#10b981",
+  "icon": "shoppingCart",
+  "link": "https://github.com/monde1999"
+}

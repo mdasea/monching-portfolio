@@ -1,0 +1,58 @@
+{
+  "items": [
+    {
+      "href": "https://www.linkedin.com/feed/update/urn:li:activity:7350662540168753154/",
+      "image": "/linkedin-featured-1.jpg",
+      "imageAlt": "LinkedIn Post - Hackathon Win",
+      "sourceLabel": "Monching Desierto · LinkedIn",
+      "title": "Hackathon Champion — #TeamPathFinders",
+      "description": "Won an international hackathon with a global team. Announcing the incredible achievement celebrating teamwork, innovation, and hard work that made it all possible."
+    },
+    {
+      "href": "https://web.facebook.com/cstaromana/posts/international-collaboration-achieved-this-morning-bscs-students-of-cit-universit/10221743783316167/",
+      "image": "/cit-featured-5.jpg",
+      "imageAlt": "International Research Collaboration - CIT x STUST",
+      "sourceLabel": "Cherry Lyn Sta Romana · Facebook",
+      "title": "International Research Collaboration — CIT x STUST",
+      "description": "BSCS students of CIT University successfully presented six (6) research projects created in collaboration with the Southern Taiwan University of Science and Technology."
+    },
+    {
+      "href": "https://web.facebook.com/CITUniversity/posts/5408272749203035",
+      "image": "/cit-featured.jpg",
+      "imageAlt": "CIT University Facebook Post - Academic Excellence",
+      "sourceLabel": "CIT University · Facebook",
+      "title": "#CITTopsAgain",
+      "description": "Congratulations to the top-performing students recognized by Cebu Institute of Technology - University for academic excellence and outstanding achievements."
+    },
+    {
+      "href": "https://web.facebook.com/CITUniversity/posts/cittopsagainour-very-own-students-from-the-computer-science-department-reigned-c/3042615402435460/",
+      "image": "/cit-featured-2.jpg",
+      "imageAlt": "CIT University Facebook Post - Coding Challenge",
+      "sourceLabel": "CIT University · Facebook",
+      "title": "#CITTopsAgain — Coding Challenge Champions",
+      "description": "Our very own students from the Computer Science Department reigned Champion in the Central Visayas Coding Challenge held last February 22, 2020."
+    },
+    {
+      "href": "https://web.facebook.com/cit.university.ccs/posts/congratulations-to-monching-desierto-bscs-4-for-winning-first-place-this-is-actu/4672417976143014/",
+      "image": "/cit-featured-4.jpg",
+      "imageAlt": "CIT CCS Facebook Post - IT Olympics Java Winner",
+      "sourceLabel": "CIT University CCS · Facebook",
+      "title": "Java Programming Champion — IT Olympics",
+      "description": "Congratulations to Monching Desierto (BSCS-4) for winning First Place (First Runner-Up) in the Java Programming Competition during the IT Olympics."
+    },
+    {
+      "href": "https://web.facebook.com/CITUniversity/posts/ppc-2018-series-three-of-fivelet-us-get-to-know-half-50-out-of-100-of-the-studen/2308734745823533/",
+      "image": "/cit-featured-3.jpg",
+      "imageAlt": "CIT University Facebook Post - PPC 2018",
+      "sourceLabel": "CIT University · Facebook",
+      "title": "PPC 2018 — Team Introduction",
+      "description": "Introducing the second team of First Year students, PPC Team 4 — part of the PPC 2018 Series."
+    },
+    {
+      "href": "https://web.facebook.com/monchingbdesierto/posts/pfbid084M2TB9RL773Y31mWCWy3wCb4SFBH1H9Z86343MvsTHVKWFeNqHuBNbSmuA6QNEil",
+      "sourceLabel": "Monching Desierto · Facebook",
+      "title": "Personal Achievement Spotlight",
+      "description": "Highlighting personal milestones, projects, and achievements in software development, AI exploration, and academic excellence."
+    }
+  ]
+}

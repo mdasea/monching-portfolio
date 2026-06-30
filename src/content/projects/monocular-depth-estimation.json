@@ -1,0 +1,7 @@
+{
+  "title": "Monocular Image Depth Estimation",
+  "description": "Authored and published a research paper on monocular image object-depth estimation on mobile phones during internship at STUST, Taiwan. Focused on deep learning approaches for single-image depth prediction.",
+  "tags": ["AI Research", "Computer Vision", "Deep Learning", "Python"],
+  "accent": "#0db9d7",
+  "icon": "flask"
+}

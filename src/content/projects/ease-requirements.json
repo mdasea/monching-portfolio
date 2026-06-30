@@ -1,0 +1,9 @@
+{
+  "title": "easeRequirements Jira Plugin (R4J)",
+  "description": "Performance optimization and migration of a major Jira Data Center & Cloud plugin. Achieved 70-80% API performance improvement through legacy tree structure migration and backend optimization. Successfully migrated the codebase from Java 8 to Java 17.",
+  "tags": ["Java 17", "Spring", "React", "Vue", "Atlassian SDK"],
+  "accent": "#f7768e",
+  "icon": "",
+  "logoSrc": "/r4j-logo.png",
+  "link": "https://marketplace.atlassian.com/apps/1213064/easerequirements-requirements-management-for-jira-r4j"
+}

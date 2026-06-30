@@ -1,0 +1,17 @@
+{
+  "company": "Southern Taiwan University of Science and Technology",
+  "initials": "ST",
+  "location": "Taiwan",
+  "period": "April 2021 — June 2021",
+  "link": "https://www.stust.edu.tw/en/",
+  "logoSrc": "/stust-logo.png",
+  "roles": [
+    {
+      "title": "Intern AI Researcher",
+      "duration": "April 2021 — June 2021",
+      "highlights": [
+        "Authored and published a research paper on monocular image object-depth estimation on mobile phones"
+      ]
+    }
+  ]
+}

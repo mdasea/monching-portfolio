@@ -1,0 +1,7 @@
+{
+  "title": "MobileScan — Depth Estimation",
+  "description": "Android app from the STUST internship research: \"Obstacle Detection and Monocular Distance Estimation on a Mobile Phone for the Visually Impaired and Blind.\"",
+  "tags": ["Android", "Research", "Computer Vision", "Deep Learning", "Python"],
+  "accent": "#0db9d7",
+  "icon": "smartphone"
+}

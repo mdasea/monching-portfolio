@@ -1,0 +1,8 @@
+{
+  "title": "Overseer — Flood Mapping App",
+  "description": "A flood mapping Android app that guides users to avoid floods. Built with Django backend and Android frontend.",
+  "tags": ["Python", "Django", "Android", "GIS", "Flood Mapping"],
+  "accent": "#6366f1",
+  "icon": "waves",
+  "link": "https://github.com/monde1999/overseer_android"
+}

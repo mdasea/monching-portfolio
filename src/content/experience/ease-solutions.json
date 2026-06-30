@@ -1,0 +1,36 @@
+{
+  "company": "Ease Solutions",
+  "initials": "ES",
+  "location": "Cebu, Philippines",
+  "period": "June 2022 — Present",
+  "link": "https://www.easesolutions.com/",
+  "logoSrc": "/easesolutions-logo.svg",
+  "roles": [
+    {
+      "title": "Software Developer",
+      "duration": "March 2024 — Present",
+      "highlights": [
+        "Developed and maintained features for easeRequirements Jira Plugin (R4J) — Data Center & Cloud — using Java 8/17, Java/Jakarta EE, Spring, React, Vue, jQuery, Atlassian SDK & Forge",
+        "Consistently recognized as a top-performing developer in yearly evaluations; promoted from Junior to Mid-Level on first yearly evaluation",
+        "Spearheaded migration of legacy tree structure, achieving 70-80% performance improvement on APIs in both filtered and unfiltered trees",
+        "Optimized filtered tree loading time by 20% through backend enhancement before migration",
+        "Successfully migrated legacy Maven codebase from Java 8 to Java 17",
+        "Owned and resolved multiple backend performance issues for Jira Data Center Plugin",
+        "Active participant in Agile (Scrum) — sprint planning, daily stand-ups, retrospectives, PI Planning",
+        "Trusted backend developer and active member of the Backend Chapter, contributing to best practices and knowledge sharing",
+        "Exposed to Git, Jira Software, BitBucket"
+      ]
+    },
+    {
+      "title": "Junior Software Developer",
+      "duration": "June 2022 — February 2024",
+      "highlights": [
+        "Developed and maintained features for easeRequirements Jira Plugin (R4J) using Java 8, Java EE, Spring, React, Vue, jQuery, and Atlassian SDK",
+        "Consistently recognized as a top-performing developer; promoted to Mid-Level on first yearly evaluation",
+        "Optimized filtered tree loading time by 20% through backend enhancement",
+        "Active participant in Agile (Scrum) development",
+        "Exposed to Git, Jira Software, BitBucket"
+      ]
+    }
+  ]
+}

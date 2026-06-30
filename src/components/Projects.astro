@@ -1,139 +1,48 @@
 ---
+import { getCollection } from 'astro:content';
 import { icons } from '../lib/icons';
 
-interface Project {
-  title: string;
-  description: string;
-  tags: string[];
-  accent: string;
-  icon: string;
-  link?: string;
-  logoSrc?: string;
-}
+const iconMap: Record<string, string> = {
+  bot: icons.bot,
+  globe: icons.globe,
+  lightbulb: icons.lightbulb,
+  search: icons.search,
+  shoppingCart: icons.shoppingCart,
+  smartphone: icons.smartphone,
+  drone: icons.drone,
+  waves: icons.waves,
+  flask: icons.flask,
+  graduation: icons.graduation,
+};
 
-const projects: Project[] = [
-  {
-    title: 'easeRequirements Jira Plugin (R4J)',
-    description: 'Performance optimization and migration of a major Jira Data Center & Cloud plugin. Achieved 70-80% API performance improvement through legacy tree structure migration and backend optimization. Successfully migrated the codebase from Java 8 to Java 17.',
-    tags: ['Java 17', 'Spring', 'React', 'Vue', 'Atlassian SDK'],
-    accent: '#f7768e',
-    icon: '',
-    logoSrc: '/r4j-logo.png',
-    link: 'https://marketplace.atlassian.com/apps/1213064/easerequirements-requirements-management-for-jira-r4j',
-  },
-  {
-    title: 'AccessJobs — AI-Powered Job Recommendation',
-    description: '1st Place winner of the international Trae AI IDE: Zero Limits Hackathon (879 teams). Built an AI-powered job recommendation system with 95% accurate matches, intelligent resume parsing, and personalized career insights. Vibe coded with 4 international teammates.',
-    tags: ['Trae AI IDE', 'Novita AI API', 'AI Development', 'React', '1st Place'],
-    accent: '#bb9af7',
-    icon: icons.bot,
-    link: 'https://lablab.ai/event/code-craft-ai-x-dev-hackathon/pathfinders/access-jobs-ai-powered-job-recommendation-system',
-  },
-  {
-    title: 'Doong Island Hub',
-    description: 'The digital hub for everything Doong Island — making life easier for residents and enriching the experience for visitors.',
-    tags: ['Windsurf', 'Cursor', 'Community', 'Vibe Coding'],
-    accent: '#06b6d4',
-    icon: icons.globe,
-    link: 'https://doong-island-hub.web.app/',
-  },
-  {
-    title: 'Neutrino AI',
-    description: 'Advanced AI that handles your entire project lifecycle while you remain in control. Simply approve or refine AI suggestions for any project type — from software to novels, products to events.',
-    tags: ['Gemini API', 'Cursor', 'AI Agents', 'Requirements Engineering'],
-    accent: '#a855f7',
-    icon: icons.lightbulb,
-  },
-  {
-    title: 'AI Search',
-    description: 'A Google-search-like web app powered by AI, built for intelligent query responses and semantic search.',
-    tags: ['Google Gemini', 'Gemini API', 'AI Search', 'Web App'],
-    accent: '#3b82f6',
-    icon: icons.search,
-    link: 'https://ai-search-6d2a1.web.app/ai-search',
-  },
-  {
-    title: 'Doong Express',
-    description: 'Online web store built with Vue 3 and Firebase, providing a seamless shopping experience.',
-    tags: ['Vue.js', 'Pinia', 'Firebase', 'E-commerce'],
-    accent: '#10b981',
-    icon: icons.shoppingCart,
-    link: 'https://github.com/monde1999',
-  },
-  {
-    title: '3D Object Modeling through Phone Scan',
-    description: 'Turn a camera-scanned object into a 3D model. Research project associated with Cebu Institute of Technology.',
-    tags: ['Point Clouds', 'Android', 'Computer Vision', '3D Modeling'],
-    accent: '#f59e0b',
-    icon: icons.smartphone,
-  },
-  {
-    title: 'Drone Speed & Movement Simulation',
-    description: 'Application of Fuzzy Logic to Drone Simulation in the .NET Platform. Academic research project at CIT.',
-    tags: ['C#', '.NET', 'Fuzzy Logic', 'Simulation'],
-    accent: '#ef4444',
-    icon: icons.drone,
-  },
-  {
-    title: 'MobileScan — Depth Estimation',
-    description: 'Android app from the STUST internship research: "Obstacle Detection and Monocular Distance Estimation on a Mobile Phone for the Visually Impaired and Blind."',
-    tags: ['Android', 'Research', 'Computer Vision', 'Deep Learning', 'Python'],
-    accent: '#0db9d7',
-    icon: icons.smartphone,
-  },
-  {
-    title: 'Overseer — Flood Mapping App',
-    description: 'A flood mapping Android app that guides users to avoid floods. Built with Django backend and Android frontend.',
-    tags: ['Python', 'Django', 'Android', 'GIS', 'Flood Mapping'],
-    accent: '#6366f1',
-    icon: icons.waves,
-    link: 'https://github.com/monde1999/overseer_android',
-  },
-  {
-    title: 'Monocular Image Depth Estimation',
-    description: 'Authored and published a research paper on monocular image object-depth estimation on mobile phones during internship at STUST, Taiwan. Focused on deep learning approaches for single-image depth prediction.',
-    tags: ['AI Research', 'Computer Vision', 'Deep Learning', 'Python'],
-    accent: '#0db9d7',
-    icon: icons.flask,
-  },
-  {
-    title: 'AI Academy',
-    description: 'Learn AI concepts with AI-generated courses. Built using AI-first development tools including Windsurf and Cursor to rapidly prototype and deploy educational content.',
-    tags: ['Windsurf', 'Cursor', 'AI Education', 'Vibe Coding'],
-    accent: '#f59e0b',
-    icon: icons.graduation,
-  },
-];
+const projects = await getCollection('projects');
 ---
 
 <section class="section" id="projects">
-  <div class="container">
-    <div class="reveal">
-      <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
-      <p class="section-subtitle">Key projects and contributions</p>
-    </div>
-    <div class="projects-grid">
-      {projects.map((project, i) => (
-        <div class="project-card card-custom reveal" class:list={{ 'reveal-delay-1': i > 0 }}>
-          <div class="project-icon" style={`--accent: ${project.accent}`}>
-            {project.logoSrc
-              ? <img src={project.logoSrc} alt={project.title} class="project-logo" />
-              : <span class="project-emoji" set:html={project.icon}></span>
-            }
+  <div class="page">
+    <div class="section-label">Selected Work</div>
+    <div class="entry-list">
+      {projects.map(({ data }) => (
+        <div class="entry">
+          <div class="entry-header">
+            <div class="entry-title-group">
+              {data.icon && iconMap[data.icon] ? (
+                <span class="entry-icon" style={`color: ${data.accent}`} set:html={iconMap[data.icon]}></span>
+              ) : data.link ? (
+                <span class="entry-icon" style="color: var(--text-secondary); opacity: 0.4;" set:html={icons.link}></span>
+              ) : null}
+              <h3 class="entry-title">
+                {data.link
+                  ? <a href={data.link} target="_blank" rel="noopener noreferrer">{data.title} ↗</a>
+                  : data.title
+                }
+              </h3>
+            </div>
           </div>
-          <h3 class="project-title">{project.title}</h3>
-          <p class="project-desc">{project.description}</p>
-          <div class="project-tags">
-            {project.tags.map((tag) => (
-              <span class="tag-custom">{tag}</span>
-            ))}
+          <p class="entry-desc">{data.description}</p>
+          <div class="entry-tags">
+            {data.tags.map(tag => <span class="tag">{tag}</span>)}
           </div>
-          {project.link && (
-            <a href={project.link} target="_blank" rel="noopener noreferrer" class="project-link">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-              {project.link.includes('marketplace') ? 'View on Marketplace' : 'View Project'}
-            </a>
-          )}
         </div>
       ))}
     </div>
@@ -141,101 +50,24 @@ const projects: Project[] = [
 </section>
 
 <style is:global>
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 1.5rem;
-    align-items: stretch;
-  }
-
-  .project-card {
+  .entry-title-group {
     display: flex;
-    flex-direction: column;
-    padding: 1.75rem;
-    background: oklch(var(--color-base-200) / 0.3);
-    border: 1px solid oklch(var(--color-base-content) / 0.08);
+    align-items: center;
+    gap: 0.6rem;
   }
 
-  .project-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 35px oklch(var(--color-primary) / 0.08);
-    border-color: oklch(var(--color-primary) / 0.15);
-  }
-
-  .project-icon {
-    margin-bottom: 1rem;
-    width: 52px;
-    height: 52px;
+  .entry-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 12px;
-    background: oklch(var(--color-base-200) / 0.5);
-    border: 1px solid oklch(var(--color-base-content) / 0.08);
-    transition: all 0.3s;
-    flex-shrink: 0;
+    opacity: 0.7;
   }
 
-  .project-card:hover .project-icon {
-    border-color: var(--accent, #4f7df3);
-    background: oklch(var(--color-primary) / 0.08);
-    transform: scale(1.05) rotate(-3deg);
-  }
-
-  .project-logo {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    padding: 4px;
-  }
-
-  .project-emoji svg {
-    width: 22px;
-    height: 22px;
-  }
-
-  .project-title {
-    font-size: 1.15rem;
-    font-weight: 700;
-    margin-bottom: 0.75rem;
-    line-height: 1.4;
-  }
-
-  .project-desc {
-    font-size: 0.9rem;
-    opacity: 0.65;
-    line-height: 1.7;
-    margin-bottom: 1.25rem;
-    flex: 1;
-  }
-
-  .project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-  }
-
-  .project-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: oklch(var(--color-primary));
-    margin-top: auto;
-    text-decoration: none;
-  }
-
-  .project-link svg {
-    transition: transform 0.2s;
-  }
-
-  .project-link:hover svg {
-    transform: translate(2px, -2px);
-  }
-
-  @media (max-width: 768px) {
-    .projects-grid { grid-template-columns: 1fr; }
+  .entry-icon svg {
+    width: 18px;
+    height: 18px;
   }
 </style>

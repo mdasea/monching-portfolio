@@ -1,164 +1,75 @@
 ---
-import { icons } from '../lib/icons';
+import { getCollection } from 'astro:content';
 
-interface Step {
-  num: string;
-  icon: string;
-  title: string;
-  desc: string;
-}
-
-const steps: Step[] = [
-  { num: '01', icon: icons.messageCircle, title: 'Discovery Call', desc: 'We discuss your project goals, requirements, and timeline. I ask the right questions to understand the scope and suggest the best approach.' },
-  { num: '02', icon: icons.clipboard, title: 'Planning & Proposal', desc: 'I outline the architecture, tech stack, milestones, and deliverables. You get a clear roadmap and fixed-price or hourly estimate before any work begins.' },
-  { num: '03', icon: icons.building, title: 'Development & Sprints', desc: 'I build your solution in iterative sprints with regular demos and check-ins. You see progress weekly and can provide feedback at every stage.' },
-  { num: '04', icon: icons.rocket, title: 'Deploy & Support', desc: 'I deploy to production, hand over documentation, and provide post-launch support. Your project is live, tested, and ready to scale.' },
-];
+const [wfData] = await getCollection('workflow');
+const steps = wfData.data.steps;
 ---
 
 <section class="section" id="workflow">
-  <div class="container">
-    <div class="reveal">
-      <h2 class="section-title">How I <span class="gradient-text">Work</span></h2>
-      <p class="section-subtitle">From idea to launch — a proven process</p>
-    </div>
-    <div class="workflow-grid">
-      {steps.map((s, i) => (
-        <div class="workflow-step reveal" class:list={{ 'reveal-delay-1': i > 0 }}>
-          <div class="workflow-num">{s.num}</div>
-          <div class="workflow-body">
-            <div class="workflow-icon-wrap">
-              <span class="workflow-icon" set:html={s.icon}></span>
-            </div>
-            <h3 class="workflow-title">{s.title}</h3>
-            <p class="workflow-desc">{s.desc}</p>
+  <div class="page">
+    <div class="section-label">How I Work</div>
+    <div class="wf-grid">
+      {steps.map(step => (
+        <div class="wf-step">
+          <div class="wf-num">{step.num}</div>
+          <div class="wf-body">
+            <div class="wf-title">{step.title}</div>
+            <p class="wf-desc">{step.desc}</p>
           </div>
-          {i < steps.length - 1 && <div class="workflow-line"></div>}
         </div>
       ))}
-    </div>
-    <div class="workflow-cta reveal">
-      <p class="workflow-cta-text">Ready to start a project? Let's talk about your idea.</p>
-      <a href="#contact" class="workflow-btn">Get in Touch</a>
     </div>
   </div>
 </section>
 
 <style is:global>
-  .workflow-grid {
+  .wf-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
-    position: relative;
   }
 
-  .workflow-step {
-    position: relative;
-    text-align: center;
+  .wf-step {
+    display: flex;
+    gap: 1rem;
+    padding: 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
   }
 
-  .workflow-num {
-    font-family: var(--font-mono);
-    font-size: 2.5rem;
-    font-weight: 900;
-    background: linear-gradient(135deg, #4f7df3, #8b5cf6);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  .wf-num {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent);
     opacity: 0.5;
     line-height: 1;
-    margin-bottom: -0.5rem;
+    flex-shrink: 0;
+    min-width: 2rem;
   }
 
-  .workflow-body {
-    padding: 1.75rem 1rem;
-    border-radius: 14px;
-    background: oklch(var(--color-base-200) / 0.3);
-    border: 1px solid oklch(var(--color-base-content) / 0.06);
-    transition: all 0.3s;
-    position: relative;
-    z-index: 1;
-  }
-
-  .workflow-step:hover .workflow-body {
-    border-color: oklch(var(--color-primary) / 0.2);
-    transform: translateY(-4px);
-    box-shadow: 0 8px 25px oklch(var(--color-primary) / 0.06);
-  }
-
-  .workflow-icon-wrap {
-    width: 48px;
-    height: 48px;
+  .wf-body {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    background: oklch(var(--color-primary) / 0.06);
-    margin: 0 auto 0.75rem;
+    flex-direction: column;
+    gap: 0.35rem;
   }
 
-  .workflow-icon-wrap svg {
-    width: 22px;
-    height: 22px;
-  }
-
-  .workflow-step:hover .workflow-icon-wrap {
-    background: oklch(var(--color-primary) / 0.12);
-  }
-
-  .workflow-title {
-    font-size: 1rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-  }
-
-  .workflow-desc {
-    font-size: 0.85rem;
-    opacity: 0.6;
-    line-height: 1.7;
-  }
-
-  .workflow-line {
-    display: none;
-  }
-
-  .workflow-cta {
-    text-align: center;
-    margin-top: 2rem;
-    padding: 2rem;
-    border-radius: 14px;
-    background: oklch(var(--color-base-200) / 0.3);
-    border: 1px solid oklch(var(--color-base-content) / 0.06);
-  }
-
-  .workflow-cta-text {
-    font-size: 1rem;
-    opacity: 0.7;
-    margin-bottom: 1.25rem;
-  }
-
-  .workflow-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.75rem;
-    border-radius: 10px;
+  .wf-title {
     font-weight: 600;
-    font-size: 0.92rem;
-    background: linear-gradient(135deg, #4f7df3, #6c5ce7);
-    color: #fff;
-    text-decoration: none;
-    box-shadow: 0 4px 15px oklch(var(--color-primary) / 0.3);
-    transition: all 0.3s;
+    font-size: 0.95rem;
+    color: var(--text-primary);
   }
 
-  .workflow-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px oklch(var(--color-primary) / 0.4);
-    color: #fff;
+  .wf-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
   }
 
-  @media (max-width: 768px) {
-    .workflow-grid { grid-template-columns: 1fr; gap: 1rem; }
+  @media (max-width: 640px) {
+    .wf-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>

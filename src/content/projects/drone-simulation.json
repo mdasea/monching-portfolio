@@ -1,0 +1,7 @@
+{
+  "title": "Drone Speed & Movement Simulation",
+  "description": "Application of Fuzzy Logic to Drone Simulation in the .NET Platform. Academic research project at CIT.",
+  "tags": ["C#", ".NET", "Fuzzy Logic", "Simulation"],
+  "accent": "#ef4444",
+  "icon": "drone"
+}
