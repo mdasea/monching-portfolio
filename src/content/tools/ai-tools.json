@@ -6,6 +6,10 @@
     { "name": "Cursor", "description": "AI-native code editor" },
     { "name": "Git & GitHub", "description": "Version control, CI/CD, collaboration" },
     { "name": "Docker", "description": "Containerization and reproducible environments", "link": "https://docker.com" },
-    { "name": "MCP", "description": "Model Context Protocol for AI tool integration" }
+    { "name": "MCP", "description": "Model Context Protocol for AI tool integration" },
+    { "name": "n8n", "description": "Workflow automation and AI agent orchestration" },
+    { "name": "Hermes Agent", "description": "Autonomous AI agent framework" },
+    { "name": "Lovable", "description": "AI-powered full-stack app builder" },
+    { "name": "opencode CLI", "description": "Agentic AI coding assistant for the terminal" }
   ]
 }

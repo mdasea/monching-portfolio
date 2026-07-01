@@ -7,6 +7,8 @@
     { "name": "Google Cloud (GCP)", "description": "Cloud computing and infrastructure services", "link": "https://cloud.google.com" },
     { "name": "AWS", "description": "Compute, storage, and cloud-native services", "link": "https://aws.amazon.com" },
     { "name": "VPS", "description": "Virtual private server hosting and management" },
-    { "name": "Namecheap", "description": "Domain registration and DNS management", "link": "https://namecheap.com" }
+    { "name": "Namecheap", "description": "Domain registration and DNS management", "link": "https://namecheap.com" },
+    { "name": "Supabase", "description": "Open-source Firebase alternative with PostgreSQL" },
+    { "name": "Deployment", "description": "CI/CD, hosting, and release management" }
   ]
 }
