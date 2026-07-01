@@ -2,7 +2,7 @@
   "company": "Ease Solutions",
   "initials": "ES",
   "location": "Cebu, Philippines",
-  "period": "June 2022 — Present",
+  "period": "June 2022 — Present · 4 years",
   "link": "https://www.easesolutions.com/",
   "logoSrc": "/easesolutions-logo.svg",
   "roles": [
@@ -16,9 +16,10 @@
         "Optimized filtered tree loading time by 20% through backend enhancement before migration",
         "Successfully migrated legacy Maven codebase from Java 8 to Java 17",
         "Owned and resolved multiple backend performance issues for Jira Data Center Plugin",
+        "Wrote and optimized DB-agnostic SQL queries supporting PostgreSQL, MySQL, and Oracle across plugin features",
         "Active participant in Agile (Scrum) — sprint planning, daily stand-ups, retrospectives, PI Planning",
         "Trusted backend developer and active member of the Backend Chapter, contributing to best practices and knowledge sharing",
-        "Exposed to Git, Jira Software, BitBucket"
+        "Exposed to Git, Jira Software, BitBucket; recently assisted by Junie AI"
       ]
     },
     {

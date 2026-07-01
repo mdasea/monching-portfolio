@@ -5,6 +5,7 @@
     { "name": "Java", "description": "Core language for enterprise applications", "link": "https://java.com" },
     { "name": "Spring Boot", "description": "Production-grade Spring-based applications", "link": "https://spring.io/projects/spring-boot" },
     { "name": "Jakarta EE", "description": "Enterprise Java platform specifications", "link": "https://jakarta.ee" },
-    { "name": "Spring Framework", "description": "Dependency injection and comprehensive infrastructure", "link": "https://spring.io" }
+    { "name": "Spring Framework", "description": "Dependency injection and comprehensive infrastructure", "link": "https://spring.io" },
+    { "name": "PostgreSQL / MySQL / Oracle", "description": "Cross-DBMS SQL, query optimization, and schema design" }
   ]
 }
