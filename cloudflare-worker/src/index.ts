@@ -21,6 +21,7 @@ function isAllowedOrigin(origin: string): boolean {
   return (
     origin === 'https://monchingdesierto.github.io' ||
     origin === 'https://monching-desierto.vercel.app' ||
+    origin === 'https://monching-desierto.space' ||
     origin === 'http://localhost:4321' ||
     origin === 'http://localhost' ||
     origin.endsWith('.vercel.app')
